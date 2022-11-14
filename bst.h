@@ -361,14 +361,14 @@ template<class Key, class Value>
 BinarySearchTree<Key, Value>::BinarySearchTree() 
 {
     // TODO
-    (this->root_) = NULL;
+    root_ = NULL;
 }
 
 template<typename Key, typename Value>
 BinarySearchTree<Key, Value>::~BinarySearchTree()
 {
     // TODO
-    this->clear();
+    clear();
 }   
 
 /**
@@ -662,11 +662,11 @@ BinarySearchTree<Key, Value>::predecessor(Node<Key, Value>* current)
 template<typename Key, typename Value>
 void BinarySearchTree<Key, Value>::helperDelete(Node<Key, Value>* current)
 {
-	if (current == NULL) { //current node is NULL
+	if (current == nullptr) { //current node is NULL
 		return;
 	}
-	helperDelete(current->getRight());
 	helperDelete(current->getLeft());
+	helperDelete(current->getRight());
 	delete current;
 }
 
@@ -679,7 +679,7 @@ void BinarySearchTree<Key, Value>::clear()
 {
   // TODO
 	helperDelete(root_);
-	root_ = nullptr;
+	root_ = NULL;
 }
 
 
@@ -747,8 +747,8 @@ int BinarySearchTree<Key, Value>::getHeight(Node<Key, Value> *root) const
 	if(root == nullptr){
 		return 0;
 	}
-	rightSide = getHeight(root->getRight());
 	leftSide = getHeight(root->getLeft());
+	rightSide = getHeight(root->getRight());
 	if(leftSide == -1 || rightSide == -1){
 		return -1;
 	}
